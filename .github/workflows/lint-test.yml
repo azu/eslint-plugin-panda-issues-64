@@ -1,0 +1,30 @@
+name: Lint Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install
+        run: pnpm install
+
+      - name: Lint 100 times
+        run: |
+          for i in {1..1000}
+          do
+            echo "Iteration $i"
+            pnpm run lint:website > /dev/null
+            if [ $? -eq 2 ]; then
+              break
+            fi
+          done
