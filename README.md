@@ -4,6 +4,20 @@ Reproduce repository for https://github.com/newmohq/newmo-app/pull/469
 
 ## Reproduce Steps
 
+1. Clone this repository
+```graphql
+git clone https://github.com/azu/eslint-plugin-panda-issues-64
+cd eslint-plugin-panda-issues-64
+```
+
+2. Install dependencies
+
+```
+pnpm install
+```
+
+3. Run lint until it crashes.
+
 ```bash
 for i in {1..1000}
   do
