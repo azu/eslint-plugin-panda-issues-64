@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    name: Release
+    name: Lint Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,7 +24,7 @@ jobs:
 
       - name: Lint 100 times
         run: |
-          for i in {1..1000}
+          for i in {1..100}
           do
             echo "Iteration $i"
             pnpm run lint:website > /dev/null
