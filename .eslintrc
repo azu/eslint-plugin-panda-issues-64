@@ -8,14 +8,21 @@
     "dist/**/*",
     "coverage/**/*"
   ],
+  "parserOptions": {
+    "project": "./website/tsconfig.json",
+    "tsconfigRootDir": "./"
+  },
   "parser": "@typescript-eslint/parser",
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "@pandacss",
+    "import"
   ],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/stylistic"
+    "plugin:@typescript-eslint/stylistic",
+    "plugin:@pandacss/recommended"
   ],
   "env": {
     "node": true,

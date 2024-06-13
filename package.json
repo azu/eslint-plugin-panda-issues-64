@@ -19,6 +19,7 @@
     "test:codegen": "pnpm codegen test && pnpm codegen typecheck",
     "test-watch": "vitest --watch -u",
     "lint": "eslint packages --ext .ts",
+    "lint:website": "eslint website/src --ext .tsx",
     "prettier": "prettier --check packages",
     "prettier-fix": "prettier --write packages",
     "typecheck": "tsc --noEmit",
@@ -53,6 +54,7 @@
     "vitest": "1.5.0"
   },
   "devDependencies": {
+    "@pandacss/eslint-plugin": "^0.1.5",
     "@types/eslint": "8.56.10",
     "@types/node": "20.11.30",
     "@typescript-eslint/eslint-plugin": "7.0.1",

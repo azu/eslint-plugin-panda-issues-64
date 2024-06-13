@@ -1,132 +1,40 @@
-![Write typesafe styles with Panda](.github/assets/banner.png 'Write typesafe styles with Panda')
+# TypeError: Cannot read properties of undefined (reading 'message')
 
-<p align="center">
-  <br/>
-  <a href="https://panda-css.com">Panda</a> is a universal styling solution for the modern web &mdash;
-  <br/>
-  build time, type safe, and scalable CSS-in-JS
-  <br/><br/>
-</p>
+Reproduce repository for https://github.com/newmohq/newmo-app/pull/469
 
-## Features
-
-- ⚡️ Write style objects or style props, extract them at build time
-- ✨ Modern CSS output — cascade layers `@layer`, css variables and more
-- 🦄 Works with most JavaScript frameworks
-- 🚀 Recipes and Variants - Just like Stitches™️ ✨
-- 🎨 High-level design tokens support for simultaneous themes
-- 💪 Type-safe styles and autocomplete (via codegen)
-
-<br/>
-
----
-
-<p align="center">
-<b>
-🐼 Get a taste of Panda. Try it out for yourself in&nbsp;
- <a href="https://stackblitz.com/edit/vitejs-vite-lfwyue?file=src%2FApp.tsx&terminal=dev">StackBlitz</a>
-</b>
-</p>
-
----
-
-<br/>
-
-## Documentation
-
-Visit our [official documentation](https://panda-css.com/).
-
-## Install
-
-The **recommended** way to install the latest version of Panda is by running the command below:
+## Reproduce Steps
 
 ```bash
-npm i -D @pandacss/dev
+for i in {1..1000}
+  do
+    pnpm run lint:website > /dev/null
+    if [ $? -eq 2 ]; then
+      break
+    fi
+done
 ```
 
-To scaffold the panda config and postcss
+Crash @pandacss/eslint-plugin randomly.
 
 ```bash
-npx panda init -p
+> eslint website/src --ext .tsx
+
+
+Oops! Something went wrong! :(
+
+ESLint: 8.56.0
+
+TypeError: Cannot read properties of undefined (reading 'message')
+Occurred while linting /Users/azu/ghq/github.com/chakra-ui/panda/website/src/nextra/framework-card.tsx:99
+Rule: "@pandacss/no-invalid-token-paths"
+    at syncFn (/Users/azu/ghq/github.com/chakra-ui/panda/node_modules/.pnpm/synckit@0.9.0/node_modules/synckit/lib/index.cjs:352:59)
+    at /Users/azu/ghq/github.com/chakra-ui/panda/node_modules/.pnpm/@pandacss+eslint-plugin@0.1.5_eslint@8.56.0_jsdom@24.0.0_typescript@5.3.3/node_modules/@pandacss/eslint-plugin/dist/index.js:8060:34
+    at Array.filter (<anonymous>)
+    at getImports (/Users/azu/ghq/github.com/chakra-ui/panda/node_modules/.pnpm/@pandacss+eslint-plugin@0.1.5_eslint@8.56.0_jsdom@24.0.0_typescript@5.3.3/node_modules/@pandacss/eslint-plugin/dist/index.js:8060:18)
+    at isPandaIsh (/Users/azu/ghq/github.com/chakra-ui/panda/node_modules/.pnpm/@pandacss+eslint-plugin@0.1.5_eslint@8.56.0_jsdom@24.0.0_typescript@5.3.3/node_modules/@pandacss/eslint-plugin/dist/index.js:8068:19)
+    at isInPandaFunction (/Users/azu/ghq/github.com/chakra-ui/panda/node_modules/.pnpm/@pandacss+eslint-plugin@0.1.5_eslint@8.56.0_jsdom@24.0.0_typescript@5.3.3/node_modules/@pandacss/eslint-plugin/dist/index.js:8143:8)
+    at isPandaAttribute (/Users/azu/ghq/github.com/chakra-ui/panda/node_modules/.pnpm/@pandacss+eslint-plugin@0.1.5_eslint@8.56.0_jsdom@24.0.0_typescript@5.3.3/node_modules/@pandacss/eslint-plugin/dist/index.js:8161:20)
+    at Property (/Users/azu/ghq/github.com/chakra-ui/panda/node_modules/.pnpm/@pandacss+eslint-plugin@0.1.5_eslint@8.56.0_jsdom@24.0.0_typescript@5.3.3/node_modules/@pandacss/eslint-plugin/dist/index.js:8829:14)
+    at ruleErrorHandler (/Users/azu/ghq/github.com/chakra-ui/panda/node_modules/.pnpm/eslint@8.56.0/node_modules/eslint/lib/linter/linter.js:1076:28)
+    at /Users/azu/ghq/github.com/chakra-ui/panda/node_modules
 ```
-
-Setup and import the entry CSS file
-
-```css
-@layer reset, base, tokens, recipes, utilities;
-```
-
-```jsx
-import 'path/to/entry.css'
-```
-
-Start the dev server of your project
-
-```bash
-npm run dev
-```
-
-Start using panda
-
-```jsx
-import { css } from '../styled-system/css'
-import { stack, vstack, hstack } from '../styled-system/patterns'
-
-function Example() {
-  return (
-    <div>
-      <div className={hstack({ gap: '30px', color: 'pink.300' })}>Box 1</div>
-      <div className={css({ fontSize: 'lg', color: 'red.400' })}>Box 2</div>
-    </div>
-  )
-}
-```
-
-## Directory Structure
-
-| Package                                       | Description                                                 |
-| --------------------------------------------- | ----------------------------------------------------------- |
-| [cli](packages/cli)                           | CLI package installed by the end user                       |
-| [core](packages/core)                         | Contains core features of Panda (utility, recipes, etc)     |
-| [config](packages/config)                     | Contains functions for reading and merging the panda config |
-| [extractor](packages/extractor)               | Contains code for fast AST parsing and scanning             |
-| [generator](packages/generator)               | Contains codegen artifacts (js, css, jsx)                   |
-| [parser](packages/parser)                     | Contains code for parsing a source code                     |
-| [is-valid-prop](packages/is-valid-prop)       | Contains code for checking if a prop is a valid css prop    |
-| [node](packages/node)                         | Contains the Node.js API of Panda's features                |
-| [token-dictionary](packages/token-dictionary) | Contains code used to process tokens and semantic tokens    |
-| [shared](packages/shared)                     | Contains shared TS functions                                |
-
-## Contributing
-
-Feel like contributing? That's awesome! We have a
-[contributing guide](https://github.com/chakra-ui/panda/blob/main/CONTRIBUTING.md) to help guide you.
-
-### Want to help improve the docs?
-
-Our docsite lives in the [monorepo](./website/pages/docs/).
-
-If you're interested in contributing to the documentation, check out the
-[contributing guide](https://github.com/chakra-ui/panda/blob/main/CONTRIBUTING.md).
-
-## Support
-
-Having trouble? Get help in the official [Panda Discord](https://discord.gg/VQrkpsgSx7).
-
-## Acknowledgement
-
-The development of Panda was only possible due to the inspiration and ideas from these amazing projects.
-
-- [Chakra UI](https://chakra-ui.com/) - where it all started
-- [Vanilla Extract](https://vanilla-extract.style/) - for inspiring the utilities API
-- [Stitches](https://stitches.dev/) - for inspiring the recipes and variants API
-- [Tailwind CSS](https://tailwindcss.com/) - for inspiring the JIT compiler and strategy
-- [Class Variance Authority](https://cva.style/) - for inspiring the `cva` name
-- [Styled System](https://styled-system.com/) - for the initial idea of Styled Props
-- [Linaria](https://linaria.dev/) - for inspiring the initial atomic css strategy
-- [Uno CSS](https://unocss.dev) - for inspiring the studio and astro integration
-- [Goober](https://goober.rocks/) - for tiny and performant js functions in template literal styles
-
-## License
-
-MIT License © 2023-Present [Segun Adebayo](https://github.com/segunadebayo)
