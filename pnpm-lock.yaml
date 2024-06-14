@@ -61,8 +61,8 @@ importers:
         version: 1.5.0(@types/node@20.11.30)(happy-dom@13.3.8)(jsdom@24.1.0)(less@4.2.0)(lightningcss@1.25.1)(terser@5.31.1)
     devDependencies:
       '@pandacss/eslint-plugin':
-        specifier: ^0.1.6
-        version: 0.1.6(eslint@8.56.0)(jsdom@24.1.0)(typescript@5.3.3)
+        specifier: ^0.1.7
+        version: 0.1.7(eslint@8.56.0)(jsdom@24.1.0)(typescript@5.3.3)
       '@types/eslint':
         specifier: 8.56.10
         version: 8.56.10
@@ -4494,8 +4494,8 @@ packages:
   '@pandacss/core@0.40.1':
     resolution: {integrity: sha512-12Eu6ReCYZYu6Y/cX5YvGUS8eJkCVJYR8njWAqJmSg+rg/vqmkAM+KL8qdYw95WiTzih1dPaSq+MqkiX3N9hUg==}
 
-  '@pandacss/eslint-plugin@0.1.6':
-    resolution: {integrity: sha512-VpnKLBUT1UWG2XzcgyHb/xSeExRAXlnYvJmtnr5agL5LQ29ufJe/QtQJHMPuzFS7CWrAZ/3+m6xs1vMKfiKDIg==}
+  '@pandacss/eslint-plugin@0.1.7':
+    resolution: {integrity: sha512-P4Nk8lcm0sT1LOD3iX3/ebqhjNXufi8Hek5mYR8/Et7RL10h0DiQno+OZanll3B9unnShm12MdYYHSAcfwQiqw==}
     peerDependencies:
       eslint: '*'
 
@@ -20418,7 +20418,7 @@ snapshots:
       postcss-selector-parser: 6.0.16
       ts-pattern: 5.0.8
 
-  '@pandacss/eslint-plugin@0.1.6(eslint@8.56.0)(jsdom@24.1.0)(typescript@5.3.3)':
+  '@pandacss/eslint-plugin@0.1.7(eslint@8.56.0)(jsdom@24.1.0)(typescript@5.3.3)':
     dependencies:
       '@pandacss/config': 0.40.1
       '@pandacss/generator': 0.40.1
